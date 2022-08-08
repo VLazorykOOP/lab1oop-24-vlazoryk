@@ -9,6 +9,7 @@
 
 using namespace std;
 
+typedef double* pDouble;
 /*
 *   ConsoleInputArrayDouble
 *   
@@ -53,6 +54,28 @@ int RndInputArray(int sizeMax, double A[])
     return size;
 }
 
+int ConsoleInputArray(int sizeMax, pDouble &pA)
+{
+    int size = 0;
+    do {
+        cout << " Input size Array ( 0< 1 < " << sizeMax << " ) ";
+        cin >> size;
+    } while (size <= 0 || size >= sizeMax);
+    pA = new double[size];
+    if (pA == nullptr) { return 0; }
+    for (int i = 0; i < size; i++) {
+        cout << " Array[ " << i << "] "; cin >> pA[i];
+    }
+    return size;
+}
+
+
+
+/*
+*  WriteArrayFile 
+*
+*/
+
 void WriteArrayFile(int n, double *arr, const char *fileName )
 {
     ofstream fout(fileName);
@@ -90,13 +113,13 @@ void WriteArrayBinFile(int n, double* arr, const char* fileName)
 
 int ReadArrayBinFile(int n, double* arr, const char* fileName)
 {
-    int size;
+    int size=0;
     ifstream bfin(fileName, ios_base::binary);
    // fin >> size;
     bfin.read((char*)&size, sizeof(int));
     if (size <= 0) return 0;
     if (size > n) size = n;
-    bfin.read((char*)arr, size*sizeof(double));
+    bfin.read((char*)arr, size * sizeof(double));
     //for (int i = 0; i < n; i++)
     //    fin >> arr[i];
     bfin.close();
@@ -105,21 +128,22 @@ int ReadArrayBinFile(int n, double* arr, const char* fileName)
 
 int main()
 {
+    const int MAX_SIZE = 500;
     std::cout << "Hello World!\n";
-    double A[1000], B[1000],C[1000];
+    double A[MAX_SIZE], B[MAX_SIZE],C[MAX_SIZE];
     int n,m;
-    n = RndInputArray(1000, A);
+    n = RndInputArray(MAX_SIZE, A);
     WriteArrayFile(n, A, "1.txt");
-    m = ReadArrayFile(1000, B, "1.txt");
+    m = ReadArrayFile(MAX_SIZE, B, "1.txt");
     cout << " \n m= " << m << endl;
     for (int i = 0; i < m; i++)
         cout << B[i] << "   ";
     WriteArrayBinFile(n, A, "1.bin");
-    m = ReadArrayBinFile(1000, C, "1.bin");
+    m = ReadArrayBinFile(MAX_SIZE, C, "1.bin");
     cout << " \n m= " << m << endl;
     for (int i = 0; i < m; i++)
         cout << C[i] << "   ";
-
+    return 1;
 
 }
 
