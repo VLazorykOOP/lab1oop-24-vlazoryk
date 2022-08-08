@@ -15,7 +15,7 @@ using namespace std;
 */
 int ConsoleInputArray(int sizeMax, double A[])
 {
-    int size;
+    int size=0;
     do {
         cout << " Input size Array ( 0< 1 < " << sizeMax << " ) ";
         cin >> size;
@@ -32,7 +32,7 @@ int ConsoleInputArray(int sizeMax, double A[])
 */
 int RndInputArray(int sizeMax, double A[])
 {
-    int size;
+    int size=0;
     do {
         cout << " Input size Array ( 0< 1 < " << sizeMax << " ) ";
         cin >> size;
