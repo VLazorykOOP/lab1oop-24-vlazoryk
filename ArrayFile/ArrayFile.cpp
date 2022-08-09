@@ -1,9 +1,10 @@
-﻿// ArrayFile.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿ // ArrayFile.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
 #include <iostream>
 #include <fstream>
 #include <ios>
+#include <vector>
 
 #include <time.h>
 
@@ -76,6 +77,16 @@ int ConsoleInputDynamicArray_calloc(int sizeMax, pDouble& pA)
         cout << " Array[ " << i << "] "; cin >> pA[i];
     }
     return size;
+}
+
+void ConsoleInputVector(int sizeMax, vector<double> &A)
+{
+    int size = ConsoleInputSizeArray(sizeMax);
+    double d;
+    for (int i = 0; i < size; i++) {
+        cout << " Array[ " << i << "] "; cin >> d; A.push_back(d);
+    }
+    return ;
 }
 
 
@@ -155,6 +166,13 @@ int main()
     cout << " \n m= " << m << endl;
     for (int i = 0; i < m; i++)
         cout << C[i] << "   ";
+    cout << "\n  Vector \n";
+    vector<double> vA;
+    ConsoleInputVector(MAX_SIZE, vA);
+    for (auto v : vA) {
+        cout << v << "   ";
+    }
+
     return 1;
 
 }
