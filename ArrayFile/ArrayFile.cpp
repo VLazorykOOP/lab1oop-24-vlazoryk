@@ -14,14 +14,23 @@ typedef double* pDouble;
 *   ConsoleInputArrayDouble
 *   
 */
-int ConsoleInputArray(int sizeMax, double A[])
+int ConsoleInputSizeArray(const int sizeMax)
 {
-    int size=0;
+    int size = 0;
     do {
         cout << " Input size Array ( 0< 1 < " << sizeMax << " ) ";
         cin >> size;
     } while (size <= 0 || size >= sizeMax);
-    for (int i = 0; i < size; i++) {
+    return size;
+}
+/*
+*   ConsoleInputArrayDouble
+*
+*/
+int ConsoleInputArray(int sizeMax, double A[])
+{
+    int size = ConsoleInputSizeArray(sizeMax);
+        for (int i = 0; i < size; i++) {
         cout << " Array[ " << i << "] "; cin >> A[i];
     }
     return size;
@@ -33,16 +42,9 @@ int ConsoleInputArray(int sizeMax, double A[])
 */
 int RndInputArray(int sizeMax, double A[])
 {
-    int size=0;
-    do {
-        cout << " Input size Array ( 0< 1 < " << sizeMax << " ) ";
-        cin >> size;
-    } while (size <= 0 || size >= sizeMax);
+    int size = ConsoleInputSizeArray(sizeMax);
     int r1=0, r2=0;
-   // tm  *time;//
-    //time_t *t;
-    //time = localtime_s (t);
-    srand(1000);
+    srand(size);
 
     for (int i = 0; i < size; i++) {
         r1 = rand();
@@ -54,13 +56,9 @@ int RndInputArray(int sizeMax, double A[])
     return size;
 }
 
-int ConsoleInputArray(int sizeMax, pDouble &pA)
+int ConsoleInputDynamicArrayNew(int sizeMax, pDouble &pA)
 {
-    int size = 0;
-    do {
-        cout << " Input size Array ( 0< 1 < " << sizeMax << " ) ";
-        cin >> size;
-    } while (size <= 0 || size >= sizeMax);
+    int size = ConsoleInputSizeArray(sizeMax);
     pA = new double[size];
     if (pA == nullptr) { return 0; }
     for (int i = 0; i < size; i++) {
@@ -69,26 +67,43 @@ int ConsoleInputArray(int sizeMax, pDouble &pA)
     return size;
 }
 
+int ConsoleInputDynamicArray_calloc(int sizeMax, pDouble& pA)
+{
+    int size = ConsoleInputSizeArray(sizeMax);
+    pA = (double*)calloc(size, sizeof(double));      // pA = (double*)malloc(size * sizeof(double)); 
+    if (pA == nullptr) { return 0; }
+    for (int i = 0; i < size; i++) {
+        cout << " Array[ " << i << "] "; cin >> pA[i];
+    }
+    return size;
+}
 
 
 /*
-*  WriteArrayFile 
+*  WriteArrayTextFile 
 *
 */
 
-void WriteArrayFile(int n, double *arr, const char *fileName )
+void WriteArrayTextFile(int n, double *arr, const char *fileName )
 {
     ofstream fout(fileName);
+    if (fout.fail()) return;
     fout << n << endl;
     for (int i = 0; i < n; i++)
         fout << arr[i] << "   ";
     fout.close();
 }
+/*
+*  ReadArrayTextFile
+*
+*/
 
-int ReadArrayFile(int n, double* arr, const char* fileName)
+
+int ReadArrayTextFile(int n, double* arr, const char* fileName)
 {
     int size;
     ifstream fin(fileName);
+    if (fin.fail()) return 0;
     fin >> size;
     if (size <= 0) return 0;
     if (size > n) size = n;
@@ -103,11 +118,10 @@ void WriteArrayBinFile(int n, double* arr, const char* fileName)
 {
     //ios_base
     ofstream bfout(fileName, ios_base::binary);
+    if (bfout.fail()) return;
     bfout.write((const char*)&n, sizeof(int));
-   // fout << n << endl;
-    //for (int i = 0; i < n; i++)
-    //    fout << arr[i] << "   ";
-    bfout.write((const char*)arr, n*sizeof(double));
+    std::streamsize  cn = static_cast<std::streamsize>(n) *sizeof(double);
+    bfout.write((const char*)arr, cn);
     bfout.close();
 }
 
@@ -115,13 +129,11 @@ int ReadArrayBinFile(int n, double* arr, const char* fileName)
 {
     int size=0;
     ifstream bfin(fileName, ios_base::binary);
-   // fin >> size;
+    if (bfin.fail()) return 0;
     bfin.read((char*)&size, sizeof(int));
     if (size <= 0) return 0;
     if (size > n) size = n;
-    bfin.read((char*)arr, size * sizeof(double));
-    //for (int i = 0; i < n; i++)
-    //    fin >> arr[i];
+    bfin.read((char*)arr, static_cast<std::streamsize>(size) * sizeof(double));
     bfin.close();
     return size;
 }
@@ -133,8 +145,8 @@ int main()
     double A[MAX_SIZE], B[MAX_SIZE],C[MAX_SIZE];
     int n,m;
     n = RndInputArray(MAX_SIZE, A);
-    WriteArrayFile(n, A, "1.txt");
-    m = ReadArrayFile(MAX_SIZE, B, "1.txt");
+    WriteArrayTextFile(n, A, "1.txt");
+    m = ReadArrayTextFile(MAX_SIZE, B, "1.txt");
     cout << " \n m= " << m << endl;
     for (int i = 0; i < m; i++)
         cout << B[i] << "   ";
