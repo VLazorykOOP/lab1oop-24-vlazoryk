@@ -17,7 +17,7 @@ typedef double* pDouble;
 */
 int ConsoleInputSizeArray(const int sizeMax)
 {
-    int size = 0;
+    int size = 0; 
     do {
         cout << " Input size Array ( 0< 1 < " << sizeMax << " ) ";
         cin >> size;
@@ -147,6 +147,20 @@ int ReadArrayBinFile(int n, double* arr, const char* fileName)
     bfin.read((char*)arr, static_cast<std::streamsize>(size) * sizeof(double));
     bfin.close();
     return size;
+}
+
+void ShowMainMenu()
+{
+    cout << "    Main Menu  \n";
+    cout << "    1.  Task 1  \n";
+    cout << "    2.  Task 2  \n";
+    cout << "    3.  Task 3  \n";
+    cout << "    e.  Task 1  \n";
+}
+
+void MenuTask()
+{
+     
 }
 
 int main()
