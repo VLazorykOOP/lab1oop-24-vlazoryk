@@ -160,9 +160,15 @@ void ShowMainMenu()
 
 void MenuTask()
 {
-     
+    cout << "    Task 1  \n";
+    cout << "    1.  Array Input Console   \n";
+    cout << "    2.  Random Array Input Console  size \n";
+    cout << "    3.  Dynamic Array Input Console   \n";
+    cout << "    4.  Dynamic Random Array Input Console  size \n";
+    cout << "    5.  Array Input text File 1.txt   \n";
+    
+    cout << "    4.  Exit  \n";
 }
-
 int main()
 {
     const int MAX_SIZE = 500;
