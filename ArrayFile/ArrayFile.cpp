@@ -167,7 +167,7 @@ void MenuTask()
     cout << "    4.  Dynamic Random Array Input Console  size \n";
     cout << "    5.  Array Input text File 1.txt   \n";
     
-    cout << "    4.  Exit  \n";
+    cout << "    0.  Exit  \n";
 }
 int main()
 {
