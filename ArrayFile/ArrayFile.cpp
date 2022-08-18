@@ -166,6 +166,12 @@ void MenuTask()
     cout << "    3.  Dynamic Array Input Console   \n";
     cout << "    4.  Dynamic Random Array Input Console  size \n";
     cout << "    5.  Array Input text File 1.txt   \n";
+    cout << "    6.  Array Input text Binary 1.bin   \n";
+    cout << "    7.  use vector to array Input Console   \n";
+    cout << "    8.  Random Array Input Console  size \n";
+
+    cout << "    9.  Save Array text File 1.txt   \n";
+    cout << "    10.  Save Array Binary File 1.txt   \n";
     
     cout << "    0.  Exit  \n";
 }
@@ -173,6 +179,7 @@ int main()
 {
     const int MAX_SIZE = 500;
     std::cout << "Hello World!\n";
+    ShowMainMenu();
     double A[MAX_SIZE], B[MAX_SIZE],C[MAX_SIZE];
     int n,m;
     n = RndInputArray(MAX_SIZE, A);
