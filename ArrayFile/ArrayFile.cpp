@@ -208,7 +208,7 @@ void MenuTask()
 }
 int main()
 {
-    const int MAX_SIZE = 500;
+    const int MAX_SIZE = 560;
     std::cout << "Hello World!\n";
     ShowMainMenu();
     double A[MAX_SIZE], B[MAX_SIZE],C[MAX_SIZE];
