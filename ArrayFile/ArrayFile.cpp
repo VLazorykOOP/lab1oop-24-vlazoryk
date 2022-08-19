@@ -172,7 +172,7 @@ void MenuTask()
 
     cout << "    9.  Save Array text File 1.txt   \n";
     cout << "    10.  Save Array Binary File 1.txt   \n";
-    
+       cout << "    11.  Save Array Vector File 1.txt   \n";
     cout << "    0.  Exit  \n";
 }
 int main()
