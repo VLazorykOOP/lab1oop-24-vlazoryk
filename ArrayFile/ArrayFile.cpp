@@ -149,6 +149,36 @@ int ReadArrayBinFile(int n, double* arr, const char* fileName)
     return size;
 }
 
+/*
+*  WriteArrayTextFile
+*
+*/
+
+void WriteArrayVectorTextFile(vector<double> vec, const char* fileName)
+{
+    ofstream fout(fileName);
+    if (fout.fail()) return;
+    fout << vec.size() << endl;
+    for (int i = 0; i < vec.size(); i++)
+        fout << vec[i] << "   ";
+    fout.close();
+}
+
+
+void ReadArrayVectorTextFile(int n, vector<double> &vec, const char* fileName)
+{
+    int size;
+    ifstream fin(fileName);
+    if (fin.fail()) return ;
+    fin >> size;
+    if (size <= 0) return ;
+    if (size > n) size = n;
+    for (int i = 0; i < n; i++)
+        fin >> vec[i];
+    fin.close();
+    return ;
+}
+
 void ShowMainMenu()
 {
     cout << "    Main Menu  \n";
