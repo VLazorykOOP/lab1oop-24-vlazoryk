@@ -155,7 +155,9 @@ void ShowMainMenu()
     cout << "    1.  Task 1  \n";
     cout << "    2.  Task 2  \n";
     cout << "    3.  Task 3  \n";
-    cout << "    e.  Task 1  \n";
+    cout << "    e.  Task 7  \n";
+    cout << "    t.  Task 5  \n";
+
 }
 
 void MenuTask()
