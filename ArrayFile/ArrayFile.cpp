@@ -149,6 +149,21 @@ int ReadArrayBinFile(int n, double* arr, const char* fileName)
     return size;
 }
 
+void ShowMainMenu()
+{
+    cout << "    Main Menu  \n";
+    cout << "    1.  Task 1  \n";
+    cout << "    2.  Task 2  \n";
+    cout << "    3.  Task 3  \n";
+    cout << "    e.  Task 7  \n";
+    cout << "    t.  Task 5  \n";
+
+}
+
+void MenuTask()
+{
+
+}
 int main()
 {
     const int MAX_SIZE = 560;
