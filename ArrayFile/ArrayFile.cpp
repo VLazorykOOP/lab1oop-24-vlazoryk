@@ -102,7 +102,7 @@ void WriteArrayTextFile(int n, double *arr, const char *fileName )
     fout << n << endl;
     for (int i = 0; i < n; i++)
         fout << arr[i] << "   ";
-    fout.close();
+    fout.close(); //
 }
 /*
 *  ReadArrayTextFile
