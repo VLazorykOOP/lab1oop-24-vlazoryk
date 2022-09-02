@@ -162,6 +162,10 @@ void ShowMainMenu()
 
 void MenuTask()
 {
+    cout << "     Menu Task 1  \n";
+    cout << "    1.  Local array  \n";
+    cout << "    2.  Dynamic array 1 \n";
+    cout << "    3.  Dynamic array 2 \n";    
 
 }
 int main()
