@@ -147,6 +147,7 @@ int ReadArrayBinFile(int n, double* arr, const char* fileName)
     if (size > n) size = n;
     bfin.read((char*)arr, static_cast<std::streamsize>(size) * sizeof(double));
     bfin.close();
+    // ssdhs
     return size;
 }
 
