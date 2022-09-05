@@ -122,6 +122,7 @@ int ReadArrayTextFile(int n, double* arr, const char* fileName)
        fin>> arr[i];
     fin.close();
     return size;
+    //  ЧЬТМСЧБМТСЧ
 }
 
 
