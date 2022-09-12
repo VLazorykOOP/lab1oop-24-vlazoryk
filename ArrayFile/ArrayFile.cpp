@@ -122,7 +122,7 @@ int ReadArrayTextFile(int n, double* arr, const char* fileName)
        fin>> arr[i];
     fin.close();
     return size;
-    //  ЧЬТМСЧБМТСЧ
+    
 }
 
 
@@ -157,11 +157,7 @@ void ShowMainMenu()
     cout << "    1.  Task 1  \n";
     cout << "    2.  Task 2  \n";
     cout << "    3.  Task 3  \n";
-    cout << "    e.  Task 7  \n";
-    cout << "    t.  Task 5  \n";
-    cout << "    5.  Task 6  \n";
-
-}
+  }
 
 void MenuTask()
 {
@@ -172,6 +168,25 @@ void MenuTask()
     ///    
 /// rr
 }
+
+
+/*
+* Задано одновимірний масив А розміру 2N. 
+* Побудувати два масиви В і С розміру N, 
+* включивши  у масив В елементи масиву А з парними індексами,
+* а у С - з непарними.
+*****************
+*  A - in 
+*  B, C - out 
+*/
+void  TestVariant(int N, double* A, double* B, double* C) {
+    for (int i = 0; i < N; i++) {
+        B[i] = A[2 * i];
+        C[i] = A[2 * i + 1];
+    }
+}
+
+
 int main()
 {
     const int MAX_SIZE = 560;
