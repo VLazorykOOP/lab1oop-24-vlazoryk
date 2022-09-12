@@ -169,16 +169,6 @@ void MenuTask()
     cout << "    5.  Exit \n";
 }
 
-void MenuInput()
-{
-    cout << "     Menu Input   \n";
-    cout << "    1.  Console all \n";
-    cout << "    2.  Console - size, array - random \n";
-    cout << "    3.  File 1.txt \n";
-    cout << "    4.  bb    \n";
-    cout << "    5.  Exit \n";
-}
-
 
 /*
 * Задано одновимірний масив А розміру 2N. 
@@ -220,27 +210,6 @@ void TaskV()
     
 }
 
-void ArrayLocal()
-{
-    double A[1000], B[500], C[500];
-    int n;
-    char ch = '5';
-    do {
-        system("cls");
-        MenuTask();
-        ch = getchar();
-        getchar();
-        switch (ch) {
-        case '1': cout << " 1 "; break;
-        case '2': cout << " 2 "; break;
-            //
-        case '5': return;
-        }
-        cout << " Press any key and enter\n";
-        ch = getchar();
-    } while (ch != 27);
-
-}
 
 
 int main()
