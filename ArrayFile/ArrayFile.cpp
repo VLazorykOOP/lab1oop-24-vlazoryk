@@ -202,14 +202,25 @@ void  TestVariant(int N, double* A, double* B, double* C) {
 */
 void TaskV()
 {
+    double A[10];
     char ch = '5';
+    int n;
     do {
         system("cls");
         MenuTask();
+
         ch = getchar();
         getchar();
             switch (ch) {
-             case '1': cout << " 1 "; break;
+             case '1': 
+                 cout << " 1 "; 
+                 
+                  n = ConsoleInputSizeArray(10);
+                 ConsoleInputArray(10, A);
+                 for (int i = 0; i < 10; i++)
+                     cout << " a [" << i << "]=" << A[i]<<"\t";
+
+                 break;
              case '2': cout << " 2 "; break;
             //
             case '5': return;
